@@ -127,23 +127,11 @@ cadeia = "aaabaaa "
 desc = "Maquina reconhecedora da linguagem L = {a^n b a^n}"
 t = MaquinaTuring(desc, cadeia, func_trans, inicial, finais)
 t.processaCadeia()
-if t.aceita:
-    print("Cadeia aceita!")
-else:
-    print("Cadeia Rejeitada!")
 
 cadeia = "aaaaabaaaa "
 t = MaquinaTuring(desc, cadeia, func_trans, inicial, finais)
 t.processaCadeia()
-if t.aceita:
-    print("Cadeia aceita!")
-else:
-    print("Cadeia Rejeitada!")
 
 cadeia = "aaabaaaa "
 t = MaquinaTuring(desc, cadeia, func_trans, inicial, finais)
 t.processaCadeia()
-if t.aceita:
-    print("Cadeia aceita!")
-else:
-    print("Cadeia Rejeitada!")
