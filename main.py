@@ -18,7 +18,7 @@ def main():
     finais = {"final"}
     alfa = ["0", "1"]
     desc = "Maquina para inverter binario"
-    mt1 = MaquinaTuring(desc, cadeia, func_trans, inicial, finais)
+    mt1 = MaquinaTuring(desc, alfa, func_trans, inicial, finais)
     # ----------------------------------------------------------
     inicial = "q0"
     func_trans = {("q0", "a"):("q1", "#", ">"),
@@ -55,15 +55,9 @@ def main():
             if cadeia[-1] != " ": cadeia += " "
             
             if opt == 1:
-                #if not mt1.verifica_cadeia(cadeia):
-                #    print("Cadeia Invalida")
-                #    return
                 mt1.processaCadeia(cadeia)
                 main()
             else:
-                #if not mt2.verifica_cadeia(cadeia):
-                #    print("Cadeia Invalida")
-                #    return
                 mt2.processaCadeia(cadeia)
                 main()
 

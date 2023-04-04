@@ -48,31 +48,50 @@ class MaquinaTuring:
     def processaCadeia(self, cadeia):
         self.cadeia_inicial = dict(enumerate(cadeia))
         self.cadeia = dict(enumerate(cadeia))
+
+        if not self.valida_cadeia():
+            print("-----ATENCAO-----")
+            print(">Cadeia Invalida!")
+            sleep(3)
+            return
+
         # Cadeia Inicial
+        caractere = self.cadeia[self.cabeca_leitura]
+        transicao = (self.estado_atual, caractere)
         os.system('clear')
         self.printa()
         print(f"Cabeca de Leitura => ^")
         print(f"Estado Atual      => {self.estado_atual}")
-        sleep(1)
+        print(f"Transicao         => ")
+        if transicao in self.transicoes:
+            print('\u03B4'+ f"{transicao} = {self.transicoes[transicao]}")
+        else: print(f"Nao ha funcao de transicao definida para {transicao}!")
+        sleep(2)
         os.system(CLEAR)
 
         # Processamento
         while not self.fim:
             self.processa()
+            caractere = self.cadeia[self.cabeca_leitura]
+            transicao = (self.estado_atual, caractere)
             # Impressao
             cabeca_pos = " " * self.cabeca_leitura
             cabeca_pos += "^"
             self.printa()
             print(f"Cabeca de Leitura => {cabeca_pos}")
             print(f"Estado Atual      => {self.estado_atual}")
-            sleep(1)
+            print(f"Transicao         => ")
+            if transicao in self.transicoes:
+                print('\u03B4'+ f"{transicao} = {self.transicoes[transicao]}")
+            else: print(f"Nao ha funcao de transicao definida para {transicao}!")
+            sleep(2)
             os.system(CLEAR)
 
         self.printa()
         print("*****************")
-        print("  Cadeia Aceita !") if self.aceita else "Cadeia Rejeitada!"
+        print("  Cadeia Aceita !") if self.aceita else print("Cadeia Rejeitada!")
         print("*****************")
-        sleep(2)
+        sleep(3)
 
     def printa(self):
         print(f"{'=-'*(len(self.descricao)//2)}")
@@ -92,4 +111,13 @@ class MaquinaTuring:
             for caractere in self.cadeia.values():
                 string += str(caractere)
             return string
+    
+    def valida_cadeia(self):
+        for caractere in self.cadeia.values():
+            if (
+                str(caractere) not in self.alfabeto and
+                str(caractere) != self.simbolo_vazio
+            ): 
+                return False
 
+        return True
