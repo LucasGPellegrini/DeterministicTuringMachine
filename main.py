@@ -49,17 +49,17 @@ def main():
         print("3. Sair do Programa")
         opt = int(input("Escolha uma opção: "))
 
-        if opt == 3: return
-        else:
-            cadeia = input("Digite a cadeia: ")
-            if cadeia[-1] != " ": cadeia += " "
+    if opt == 3: return
+    else:
+        cadeia = input("Digite a cadeia: ")
+        if cadeia[-1] != " ": cadeia += " "
             
-            if opt == 1:
-                mt1.processaCadeia(cadeia)
-                main()
-            else:
-                mt2.processaCadeia(cadeia)
-                main()
+        if opt == 1:
+            mt1.processaCadeia(cadeia)
+            main()
+        else:
+            mt2.processaCadeia(cadeia)
+            main()
 
 
 
