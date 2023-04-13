@@ -19,8 +19,11 @@ def main():
         path = os.path.join(diretorio, arquivo)
         with open(path, 'rb') as mt_arq:
             maquina = pickle.load(mt_arq)
-            dicio_mt.update({nome:maquina})
-
+            if maquina.verifica_maquina():
+                dicio_mt.update({nome:maquina})
+            else:
+                print(f"Maquina '{nome}' invalida!")
+                sleep(2)
     # Menu com usuario
     while opt > 3 or opt < 1:
         os.system(CLEAR)

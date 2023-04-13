@@ -129,3 +129,20 @@ class MaquinaTuring:
                 return False
 
         return True
+
+    def verifica_maquina(self):
+        for estado, transicao in self.transicoes.items():
+            est_atual, simbolo = estado
+            est_proxm, si_novo, direcao = transicao
+
+            if (
+                str(est_atual) not in self.estados or
+                str(est_proxm) not in self.estados or
+
+                str(simbolo) not in self.alfa_fita or
+                str(si_novo) not in self.alfa_fita
+            ):
+                return False
+
+        return True
+
