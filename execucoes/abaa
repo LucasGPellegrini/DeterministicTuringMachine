@@ -1,0 +1,72 @@
+Estados: ['q0', 'q1', 'q2', 'q3', 'q4', 'qf']
+Alfabeto da Fita: ['a', 'b', '#', ' ']
+Simbolo Vazio: ' '
+Alfabeto (Σ): ['a', 'b']
+Estado inicial: q0
+Estados Finais: {'qf'}
+Transicoes (δ): {('q0', 'a'): ('q1', '#', '>'), ('q0', 'b'): ('q4', 'b', '>'), ('q1', 'a'): ('q1', 'a', '>'), ('q1', 'b'): ('q1', 'b', '>'), ('q1', ' '): ('q2', ' ', '<'), ('q1', '#'): ('q2', '#', '<'), ('q2', 'a'): ('q3', '#', '<'), ('q3', 'a'): ('q3', 'a', '<'), ('q3', 'b'): ('q3', 'b', '<'), ('q3', '#'): ('q0', '#', '>'), ('q4', '#'): ('qf', '#', '*')}
+-----------------------------------------------
+Cadeia inicial    => abaa 
+Cadeia processada => #ba# CADEIA REJEITADA!
+
+------------PASSO-A-PASSO------------
+Cadeia processada => abaa 
+Cabeca de Leitura => ^
+Estado Atual      => q0
+δ('q0', 'a') = ('q1', '#', '>')
+
+Cadeia processada => #baa 
+Cabeca de Leitura =>  ^
+Estado Atual      => q1
+δ('q1', 'b') = ('q1', 'b', '>')
+
+Cadeia processada => #baa 
+Cabeca de Leitura =>   ^
+Estado Atual      => q1
+δ('q1', 'a') = ('q1', 'a', '>')
+
+Cadeia processada => #baa 
+Cabeca de Leitura =>    ^
+Estado Atual      => q1
+δ('q1', 'a') = ('q1', 'a', '>')
+
+Cadeia processada => #baa 
+Cabeca de Leitura =>     ^
+Estado Atual      => q1
+δ('q1', ' ') = ('q2', ' ', '<')
+
+Cadeia processada => #baa 
+Cabeca de Leitura =>    ^
+Estado Atual      => q2
+δ('q2', 'a') = ('q3', '#', '<')
+
+Cadeia processada => #ba# 
+Cabeca de Leitura =>   ^
+Estado Atual      => q3
+δ('q3', 'a') = ('q3', 'a', '<')
+
+Cadeia processada => #ba# 
+Cabeca de Leitura =>  ^
+Estado Atual      => q3
+δ('q3', 'b') = ('q3', 'b', '<')
+
+Cadeia processada => #ba# 
+Cabeca de Leitura => ^
+Estado Atual      => q3
+δ('q3', '#') = ('q0', '#', '>')
+
+Cadeia processada => #ba# 
+Cabeca de Leitura =>  ^
+Estado Atual      => q0
+δ('q0', 'b') = ('q4', 'b', '>')
+
+Cadeia processada => #ba# 
+Cabeca de Leitura =>   ^
+Estado Atual      => q4
+Nao ha funcao de transicao definida para ('q4', 'a')
+
+Cadeia processada => #ba# 
+Cabeca de Leitura =>   ^
+Estado Atual      => q4
+Nao ha funcao de transicao definida para ('q4', 'a')
+

@@ -63,20 +63,31 @@ class MaquinaTuring:
             sleep(3)
             return
 
+        # Prepara os dados que serao escritos no arquivo
+        conteudo_arqv = self.__setuplaToString()
+        passo_a_passo = ""
+        passo_a_passo += "Cadeia processada => " + self.cadeia_to_string() + "\n"
+        passo_a_passo += "Cabeca de Leitura => ^\n"
+        passo_a_passo += "Estado Atual      => " + self.estado_atual + "\n"
+
         # Cadeia Inicial
         caractere = self.cadeia[self.cabeca_leitura]
         transicao = (self.estado_atual, caractere)
-        os.system('clear')
+        # Impressao
+        os.system(CLEAR)
         self.printa()
         print(f"Cabeca de Leitura => ^")
         print(f"Estado Atual      => {self.estado_atual}")
         print(f"Transicao         => ")
         if transicao in self.transicoes:
             print('\u03B4'+ f"{transicao} = {self.transicoes[transicao]}")
-        else: print(f"Nao ha funcao de transicao definida para {transicao}!")
+            passo_a_passo += '\u03B4'+ str(transicao) + " = " + str(self.transicoes[transicao]) + "\n\n"
+        else: 
+            print(f"Nao ha funcao de transicao definida para {transicao}!")
+            passo_a_passo += "Nao ha funcao de transicao definida para "+ str(transicao) + "\n\n"
         sleep(2)
         os.system(CLEAR)
-
+        
         # Processamento
         while not self.fim:
             self.processa()
@@ -89,17 +100,33 @@ class MaquinaTuring:
             print(f"Cabeca de Leitura => {cabeca_pos}")
             print(f"Estado Atual      => {self.estado_atual}")
             print(f"Transicao         => ")
+            passo_a_passo += "Cadeia processada => " + self.cadeia_to_string() + "\n"
+            passo_a_passo += "Cabeca de Leitura => " + cabeca_pos + "\n"
+            passo_a_passo += "Estado Atual      => " + self.estado_atual + "\n"
             if transicao in self.transicoes:
                 print('\u03B4'+ f"{transicao} = {self.transicoes[transicao]}")
-            else: print(f"Nao ha funcao de transicao definida para {transicao}!")
+                passo_a_passo += '\u03B4'+ str(transicao) + " = " + str(self.transicoes[transicao]) + "\n\n"
+            else: 
+                print(f"Nao ha funcao de transicao definida para {transicao}!")
+                passo_a_passo += "Nao ha funcao de transicao definida para "+ str(transicao) + "\n\n"
+            
             sleep(2)
             os.system(CLEAR)
 
+        conteudo_arqv += "Cadeia processada => " + self.cadeia_to_string()
         self.printa()
         print("*****************")
-        print("  Cadeia Aceita !") if self.aceita else print("Cadeia Rejeitada!")
+        if self.aceita:
+            print("  Cadeia Aceita !")
+            conteudo_arqv += "CADEIA ACEITA!"
+        else:
+            print("Cadeia Rejeitada!")
+            conteudo_arqv += "CADEIA REJEITADA!"
         print("*****************")
         sleep(3)
+        conteudo_arqv += "\n\n"
+
+        self.__salva_no_arqv(conteudo_arqv, passo_a_passo)
 
     def printa(self):
         print(f"{'=-'*(len(self.descricao)//2)}")
@@ -145,4 +172,32 @@ class MaquinaTuring:
                 return False
 
         return True
+
+    def __setuplaToString(self):
+        setupla = ""
+        setupla += "Estados: " + str(self.estados) + "\n"
+        setupla += "Alfabeto da Fita: " + str(self.alfa_fita) + "\n"
+        setupla += "Simbolo Vazio: '" + str(self.simbolo_vazio) + "'\n"
+        setupla += "Alfabeto (" + '\u03A3' + "): " + str(self.alfabeto) + "\n"
+        setupla += "Estado inicial: " + str(self.estado_atual) + "\n"
+        setupla += "Estados Finais: " + str(self.ests_finais) + "\n"
+        setupla += "Transicoes (" + '\u03B4' + "): " + str(self.transicoes) + "\n"
+        setupla += "-----------------------------------------------\n"
+        setupla += "Cadeia inicial    => " + str(self.cadeia_to_string('ini')) + "\n"
+        
+        return setupla
+
+    def __salva_no_arqv(self, cabecalho, passos):
+        string = ""
+        string += cabecalho
+        string += "------------PASSO-A-PASSO------------\n"
+        string += passos
+
+        nome = ''
+        for char in list(self.cadeia_inicial.values())[:-1]:
+            nome += char
+        diretorio = "execucoes"
+        path = os.path.join(diretorio, nome)
+        with open(path, 'w') as arqv:
+            arqv.write(string)
 

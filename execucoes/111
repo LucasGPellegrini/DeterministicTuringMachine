@@ -1,0 +1,42 @@
+Estados: ['q0', 'qf']
+Alfabeto da Fita: ['0', '1', ' ']
+Simbolo Vazio: ' '
+Alfabeto (Σ): ['0', '1']
+Estado inicial: q0
+Estados Finais: {'qf'}
+Transicoes (δ): {('q0', '0'): ('q0', '1', '>'), ('q0', '1'): ('q0', '0', '>'), ('q0', ' '): ('qf', ' ', '*')}
+-----------------------------------------------
+Cadeia inicial    => 111 
+Cadeia processada => 000 CADEIA ACEITA!
+
+------------PASSO-A-PASSO------------
+Cadeia processada => 111 
+Cabeca de Leitura => ^
+Estado Atual      => q0
+δ('q0', '1') = ('q0', '0', '>')
+
+Cadeia processada => 011 
+Cabeca de Leitura =>  ^
+Estado Atual      => q0
+δ('q0', '1') = ('q0', '0', '>')
+
+Cadeia processada => 001 
+Cabeca de Leitura =>   ^
+Estado Atual      => q0
+δ('q0', '1') = ('q0', '0', '>')
+
+Cadeia processada => 000 
+Cabeca de Leitura =>    ^
+Estado Atual      => q0
+δ('q0', ' ') = ('qf', ' ', '*')
+
+Cadeia processada => 000 
+Cabeca de Leitura =>    ^
+Estado Atual      => qf
+Nao ha funcao de transicao definida para ('qf', ' ')
+
+Cadeia processada => 000 
+Cabeca de Leitura =>    ^
+Estado Atual      => qf
+Nao ha funcao de transicao definida para ('qf', ' ')
+
