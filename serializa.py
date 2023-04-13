@@ -49,9 +49,10 @@ for arquivo in os.listdir(diretorio):
             finais,
             desc
             )
-    dicio_mt.update({nome:maquina})
-    
-#dicio_mt['invertebin'].processaCadeia("010101 ")
+    if maquina.verifica_maquina():
+        dicio_mt.update({nome:maquina})
+    else:
+        print(f"Maquina '{nome}' invalida!!!")
 
 #escrita serializada das maquinas de turing
 diretorio = "maquinas_bin"
