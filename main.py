@@ -1,6 +1,7 @@
 from turingmachine import MaquinaTuring
 import os
 import sys
+import pickle
 
 # Constante para limpar terminal (Linux ou Windows)
 CLEAR = 'clear' if sys.platform.startswith('linux') else 'cls'
@@ -9,37 +10,18 @@ def main():
     opt = 0
     cadeia = ""
 
-    # ----------------------------------------------------------
-    inicial = "init"
-    func_trans = {("init","0"):("init", "1", ">"),
-                       ("init","1"):("init", "0", ">"),
-                       ("init"," "):("final"," ", "*"),
-                       }
-    finais = {"final"}
-    alfa = ["0", "1"]
-    desc = "Maquina para inverter binario"
-    mt1 = MaquinaTuring(desc, alfa, func_trans, inicial, finais)
-    # ----------------------------------------------------------
-    inicial = "q0"
-    func_trans = {("q0", "a"):("q1", "#", ">"),
-                  ("q0", "b"):("q4", "b", ">"),
-                  ("q1", "a"):("q1", "a", ">"),
-                  ("q1", "b"):("q1", "b", ">"),
-                  ("q1", " "):("q2", " ", "<"),
-                  ("q1", "#"):("q2", "#", "<"),
-                  ("q2", "a"):("q3", "#", "<"),
-                  ("q3", "a"):("q3", "a", "<"),
-                  ("q3", "b"):("q3", "b", "<"),
-                  ("q3", "#"):("q0", "#", ">"),
-                  ("q4", "#"):("qf", "#", "*")
-              }
+    # Carrega as maquinas de turing
+    dicio_mt = {}
+    diretorio = "maquinas_bin"
+    for arquivo in os.listdir(diretorio):
+        nome = arquivo[:-4]
+    
+        path = os.path.join(diretorio, arquivo)
+        with open(path, 'rb') as mt_arq:
+            maquina = pickle.load(mt_arq)
+            dicio_mt.update({nome:maquina})
 
-    finais = {"qf"}
-    alfa = ["a", "b"]
-    desc = "Maquina reconhecedora da linguagem L = {a^n b a^n}"
-    mt2 = MaquinaTuring(desc, alfa, func_trans, inicial, finais)
-    # ----------------------------------------------------------
-
+    # Menu com usuario
     while opt > 3 or opt < 1:
         os.system(CLEAR)
         print("--------------OPCOES--------------")
@@ -55,10 +37,10 @@ def main():
         if cadeia[-1] != " ": cadeia += " "
             
         if opt == 1:
-            mt1.processaCadeia(cadeia)
+            dicio_mt['invertebin'].processaCadeia(cadeia)
             main()
         else:
-            mt2.processaCadeia(cadeia)
+            dicio_mt['anban'].processaCadeia(cadeia)
             main()
 
 

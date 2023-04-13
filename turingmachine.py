@@ -8,22 +8,30 @@ CLEAR = 'clear' if sys.platform.startswith('linux') else 'cls'
 # Classe para representar Maquina de Turing
 class MaquinaTuring:
     def __init__(self,
-                 desc = "Maquina de Turing",
-                 alfabeto = "", 
+                 estados = None,
+                 alfa_fita = None,
+                 vazio = " ",
+                 sigma = None,
                  transicoes = None, 
                  est_inicial = "", 
-                 ests_finais = None):
-        self.cabeca_leitura = 0
-        self.simbolo_vazio = " "
+                 ests_finais = None,
+                 desc = "Maquina de Turing"):
+        # Elementos da Maquina
+        self.simbolo_vazio = vazio
         self.estado_atual = est_inicial
         self.ests_finais = set(ests_finais)
         self.transicoes = transicoes
-        self.alfabeto = alfabeto
+        self.alfabeto = sigma
+        self.alfa_fita = alfa_fita
+        self.estados = estados
+        self.descricao = desc
+
+        # Elementos de classe (funcionamento)
+        self.cabeca_leitura = 0
         self.aceita = False
         self.fim = False
         self.cadeia_inicial = ""
         self.cadeia = ""
-        self.descricao = desc
 
     def processa(self):
         caractere = self.cadeia[self.cabeca_leitura]
