@@ -6,32 +6,47 @@ Estado inicial: q0
 Estados Finais: {'qf'}
 Transicoes (δ): {('q0', '0'): ('q0', '1', '>'), ('q0', '1'): ('q0', '0', '>'), ('q0', ' '): ('qf', ' ', '*')}
 -----------------------------------------------
-Cadeia inicial    => 111 
-Cadeia processada => 000 CADEIA ACEITA!
+Cadeia inicial    => 100110 
+Cadeia processada => 011001 CADEIA ACEITA!
 
 ------------PASSO-A-PASSO------------
-Cadeia processada => 111 
+Cadeia processada => 100110 
 Cabeca de Leitura => ^
 Estado Atual      => q0
 δ('q0', '1') = ('q0', '0', '>')
 
-Cadeia processada => 011 
+Cadeia processada => 000110 
 Cabeca de Leitura =>  ^
 Estado Atual      => q0
-δ('q0', '1') = ('q0', '0', '>')
+δ('q0', '0') = ('q0', '1', '>')
 
-Cadeia processada => 001 
+Cadeia processada => 010110 
 Cabeca de Leitura =>   ^
+Estado Atual      => q0
+δ('q0', '0') = ('q0', '1', '>')
+
+Cadeia processada => 011110 
+Cabeca de Leitura =>    ^
 Estado Atual      => q0
 δ('q0', '1') = ('q0', '0', '>')
 
-Cadeia processada => 000 
-Cabeca de Leitura =>    ^
+Cadeia processada => 011010 
+Cabeca de Leitura =>     ^
+Estado Atual      => q0
+δ('q0', '1') = ('q0', '0', '>')
+
+Cadeia processada => 011000 
+Cabeca de Leitura =>      ^
+Estado Atual      => q0
+δ('q0', '0') = ('q0', '1', '>')
+
+Cadeia processada => 011001 
+Cabeca de Leitura =>       ^
 Estado Atual      => q0
 δ('q0', ' ') = ('qf', ' ', '*')
 
-Cadeia processada => 000 
-Cabeca de Leitura =>    ^
+Cadeia processada => 011001 
+Cabeca de Leitura =>       ^
 Estado Atual      => qf
 Nao ha funcao de transicao definida para ('qf', ' ')
 

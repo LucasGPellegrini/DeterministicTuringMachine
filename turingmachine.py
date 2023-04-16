@@ -34,7 +34,10 @@ class MaquinaTuring:
         self.cadeia = ""
 
     def processa(self):
-        caractere = self.cadeia[self.cabeca_leitura]
+        try:
+            caractere = self.cadeia[self.cabeca_leitura]
+        except IndexError:
+            self.cadeia[self.cabeca_leitura] = self.simbolo_vazio
         transicao = (self.estado_atual, caractere)
 
         if transicao in self.transicoes:
@@ -66,33 +69,13 @@ class MaquinaTuring:
         # Prepara os dados que serao escritos no arquivo
         conteudo_arqv = self.__setuplaToString()
         passo_a_passo = ""
-        passo_a_passo += "Cadeia processada => " + self.cadeia_to_string() + "\n"
-        passo_a_passo += "Cabeca de Leitura => ^\n"
-        passo_a_passo += "Estado Atual      => " + self.estado_atual + "\n"
-
-        # Cadeia Inicial
-        caractere = self.cadeia[self.cabeca_leitura]
-        transicao = (self.estado_atual, caractere)
-        # Impressao
-        os.system(CLEAR)
-        self.printa()
-        print(f"Cabeca de Leitura => ^")
-        print(f"Estado Atual      => {self.estado_atual}")
-        print(f"Transicao         => ")
-        if transicao in self.transicoes:
-            print('\u03B4'+ f"{transicao} = {self.transicoes[transicao]}")
-            passo_a_passo += '\u03B4'+ str(transicao) + " = " + str(self.transicoes[transicao]) + "\n\n"
-        else: 
-            print(f"Nao ha funcao de transicao definida para {transicao}!")
-            passo_a_passo += "Nao ha funcao de transicao definida para "+ str(transicao) + "\n\n"
-        sleep(2)
-        os.system(CLEAR)
         
         # Processamento
         while not self.fim:
-            self.processa()
+            os.system(CLEAR)
             caractere = self.cadeia[self.cabeca_leitura]
             transicao = (self.estado_atual, caractere)
+
             # Impressao
             cabeca_pos = " " * self.cabeca_leitura
             cabeca_pos += "^"
@@ -109,9 +92,8 @@ class MaquinaTuring:
             else: 
                 print(f"Nao ha funcao de transicao definida para {transicao}!")
                 passo_a_passo += "Nao ha funcao de transicao definida para "+ str(transicao) + "\n\n"
-            
+            self.processa()
             sleep(2)
-            os.system(CLEAR)
 
         conteudo_arqv += "Cadeia processada => " + self.cadeia_to_string()
         self.printa()
