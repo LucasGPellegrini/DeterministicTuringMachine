@@ -6,6 +6,7 @@ from time import sleep
 CLEAR = 'clear' if sys.platform.startswith('linux') else 'cls'
 
 # Classe para representar Maquina de Turing
+# M = (Q, Σ, Γ, δ, q0, B, F)
 class MaquinaTuring:
     def __init__(self,
                  estados = None,
@@ -16,14 +17,24 @@ class MaquinaTuring:
                  est_inicial = "", 
                  ests_finais = None,
                  desc = "Maquina de Turing"):
+
         # Elementos da Maquina
-        self.simbolo_vazio = vazio
-        self.estado_atual = est_inicial
-        self.ests_finais = set(ests_finais)
-        self.transicoes = transicoes
-        self.alfabeto = sigma
-        self.alfa_fita = alfa_fita
+        # Q
         self.estados = estados
+        # Σ
+        self.alfabeto = sigma
+        # Γ
+        self.alfa_fita = alfa_fita
+        # δ
+        self.transicoes = transicoes
+        # q0
+        self.estado_atual = est_inicial
+        # B
+        self.simbolo_vazio = vazio
+        # F
+        self.ests_finais = set(ests_finais)
+        
+        # Uma descrição da máquina
         self.descricao = desc
 
         # Elementos de classe (funcionamento)
@@ -33,13 +44,20 @@ class MaquinaTuring:
         self.cadeia_inicial = ""
         self.cadeia = ""
 
+    # Realiza um passo do processamento de uma cadeia
     def processa(self):
+        # Se consegue ler um caractere da fita
         try:
             caractere = self.cadeia[self.cabeca_leitura]
+        # Caso contrário, lê B (uma fita infinita tanto à esquerda,
+        # quanto à direita)
         except IndexError:
             self.cadeia[self.cabeca_leitura] = self.simbolo_vazio
+
+        # Estrutura a possível transição
         transicao = (self.estado_atual, caractere)
 
+        # Caso haja transição, transicione
         if transicao in self.transicoes:
             estado, acao, direcao = self.transicoes[transicao]
             self.cadeia[self.cabeca_leitura] = acao
@@ -48,18 +66,22 @@ class MaquinaTuring:
                 self.cabeca_leitura += 1
             elif direcao == "<":
                 self.cabeca_leitura -= 1
-            # se nao, nao percorre a cadeia (direcao == "*")
+            # Se não, não percorre a cadeia (direcao == "*")
                 
             self.estado_atual = estado
+        # Quando não há transição, vê se aceita (aceitação por
+        # estado final)
         else:
             if self.estado_atual in self.ests_finais:
                 self.aceita = True
             self.fim = True
 
+    # Processa uma cadeia inteira
     def processaCadeia(self, cadeia):
         self.cadeia_inicial = dict(enumerate(cadeia))
         self.cadeia = dict(enumerate(cadeia))
 
+        # Vê se 
         if not self.valida_cadeia():
             print("-----ATENCAO-----")
             print(">Cadeia Invalida!")
