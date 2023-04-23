@@ -87,7 +87,7 @@ class MaquinaTuring:
             passo_a_passo += "Cabeca de Leitura => " + cabeca_pos + "\n"
             passo_a_passo += "Estado Atual      => " + self.estado_atual + "\n"
             if transicao in self.transicoes:
-                print('\u03B4'+ f"{transicao} = {self.transicoes[transicao]}")
+                print('\u03B4' + f"{transicao} = {self.transicoes[transicao]}")
                 passo_a_passo += '\u03B4'+ str(transicao) + " = " + str(self.transicoes[transicao]) + "\n\n"
             else: 
                 print(f"Nao ha funcao de transicao definida para {transicao}!")
@@ -180,6 +180,6 @@ class MaquinaTuring:
             nome += char
         diretorio = "execucoes"
         path = os.path.join(diretorio, nome)
-        with open(path, 'w') as arqv:
+        with open(path, 'w', encoding='utf-8') as arqv:
             arqv.write(string)
 
