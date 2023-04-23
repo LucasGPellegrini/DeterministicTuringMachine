@@ -53,6 +53,18 @@ class MaquinaTuring:
         # quanto à direita)
         except IndexError:
             self.cadeia[self.cabeca_leitura] = self.simbolo_vazio
+        
+        # Verifica se o símbolo pertence à (Γ U Σ U B)
+        if (
+            str(caractere) not in self.alfabeto and
+            str(caractere) not in self.alfa_fita and
+            str(caractere) != self.simbolo_vazio 
+        ): 
+            print("\n-----ATENCAO-----")
+            print(">Cadeia Invalida!\n\n")
+            sleep(2)
+            self.fim = True
+            return
 
         # Estrutura a possível transição
         transicao = (self.estado_atual, caractere)
@@ -80,13 +92,6 @@ class MaquinaTuring:
     def processaCadeia(self, cadeia):
         self.cadeia_inicial = dict(enumerate(cadeia))
         self.cadeia = dict(enumerate(cadeia))
-
-        # Vê se 
-        if not self.valida_cadeia():
-            print("-----ATENCAO-----")
-            print(">Cadeia Invalida!")
-            sleep(3)
-            return
 
         # Prepara os dados que serao escritos no arquivo
         conteudo_arqv = self.__setuplaToString()
@@ -151,16 +156,6 @@ class MaquinaTuring:
                 string += str(caractere)
             return string
     
-    def valida_cadeia(self):
-        for caractere in self.cadeia.values():
-            if (
-                str(caractere) not in self.alfabeto and
-                str(caractere) != self.simbolo_vazio
-            ): 
-                return False
-
-        return True
-
     def verifica_maquina(self):
         for estado, transicao in self.transicoes.items():
             est_atual, simbolo = estado
