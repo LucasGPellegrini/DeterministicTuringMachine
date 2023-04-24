@@ -6,7 +6,10 @@ from time import sleep
 CLEAR = 'clear' if sys.platform.startswith('linux') else 'cls'
 
 # Classe para representar Maquina de Turing
-# M = (Q, Σ, Γ, δ, q0, B, F)
+# M = (Q, Σ, Γ, δ, q0, B, F) (SIPSER, 2006)
+# O construtor recebe os elementos na ordem:
+# M = (Q, Γ, B, Σ, δ, q0, F) + Descrição da Máquina
+# para se igualar ao formato presente nos arquivos.
 class MaquinaTuring:
     def __init__(self,
                  estados = None,
