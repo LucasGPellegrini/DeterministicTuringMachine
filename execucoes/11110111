@@ -1,0 +1,257 @@
+Estados: ['q0', 'q1', 'q2', 'q3', 'q4', 'qf', 'qv', 'q>=', 'q<']
+Alfabeto da Fita: ['1', '0', 'x', 'y', ' ']
+Simbolo Vazio: ' '
+Alfabeto (Σ): ['1', '0']
+Estado inicial: q0
+Estados Finais: {'q<', 'q>='}
+Transicoes (δ): {('q0', '1'): ('q1', 'x', '>'), ('q0', '0'): ('q4', '0', '>'), ('q1', '1'): ('q1', '1', '>'), ('q1', '0'): ('q2', '0', '>'), ('q2', '1'): ('q3', 'y', '<'), ('q2', 'y'): ('q2', 'y', '>'), ('q2', ' '): ('qv', ' ', '<'), ('q3', 'y'): ('q3', 'y', '<'), ('q3', '0'): ('q3', '0', '<'), ('q3', '1'): ('q3', '1', '<'), ('q3', 'x'): ('q0', 'x', '>'), ('q4', 'y'): ('q4', 'y', '>'), ('q4', '1'): ('qf', '1', '<'), ('q4', ' '): ('qv', ' ', '<'), ('qf', '0'): ('qf', '0', '<'), ('qf', 'y'): ('qf', '1', '<'), ('qf', 'x'): ('qf', '1', '<'), ('qf', ' '): ('q<', ' ', '>'), ('qv', 'y'): ('qv', '1', '<'), ('qv', 'x'): ('qv', '1', '<'), ('qv', '0'): ('qv', '0', '<'), ('qv', '1'): ('qv', '1', '<'), ('qv', ' '): ('q>=', ' ', '>')}
+-----------------------------------------------
+Cadeia inicial    => 11110111 
+Cadeia processada => 11110111  CADEIA ACEITA!
+
+------------PASSO-A-PASSO------------
+Cadeia processada => 11110111 
+Cabeca de Leitura => ^
+Estado Atual      => q0
+δ('q0', '1') = ('q1', 'x', '>')
+
+Cadeia processada => x1110111 
+Cabeca de Leitura =>  ^
+Estado Atual      => q1
+δ('q1', '1') = ('q1', '1', '>')
+
+Cadeia processada => x1110111 
+Cabeca de Leitura =>   ^
+Estado Atual      => q1
+δ('q1', '1') = ('q1', '1', '>')
+
+Cadeia processada => x1110111 
+Cabeca de Leitura =>    ^
+Estado Atual      => q1
+δ('q1', '1') = ('q1', '1', '>')
+
+Cadeia processada => x1110111 
+Cabeca de Leitura =>     ^
+Estado Atual      => q1
+δ('q1', '0') = ('q2', '0', '>')
+
+Cadeia processada => x1110111 
+Cabeca de Leitura =>      ^
+Estado Atual      => q2
+δ('q2', '1') = ('q3', 'y', '<')
+
+Cadeia processada => x1110y11 
+Cabeca de Leitura =>     ^
+Estado Atual      => q3
+δ('q3', '0') = ('q3', '0', '<')
+
+Cadeia processada => x1110y11 
+Cabeca de Leitura =>    ^
+Estado Atual      => q3
+δ('q3', '1') = ('q3', '1', '<')
+
+Cadeia processada => x1110y11 
+Cabeca de Leitura =>   ^
+Estado Atual      => q3
+δ('q3', '1') = ('q3', '1', '<')
+
+Cadeia processada => x1110y11 
+Cabeca de Leitura =>  ^
+Estado Atual      => q3
+δ('q3', '1') = ('q3', '1', '<')
+
+Cadeia processada => x1110y11 
+Cabeca de Leitura => ^
+Estado Atual      => q3
+δ('q3', 'x') = ('q0', 'x', '>')
+
+Cadeia processada => x1110y11 
+Cabeca de Leitura =>  ^
+Estado Atual      => q0
+δ('q0', '1') = ('q1', 'x', '>')
+
+Cadeia processada => xx110y11 
+Cabeca de Leitura =>   ^
+Estado Atual      => q1
+δ('q1', '1') = ('q1', '1', '>')
+
+Cadeia processada => xx110y11 
+Cabeca de Leitura =>    ^
+Estado Atual      => q1
+δ('q1', '1') = ('q1', '1', '>')
+
+Cadeia processada => xx110y11 
+Cabeca de Leitura =>     ^
+Estado Atual      => q1
+δ('q1', '0') = ('q2', '0', '>')
+
+Cadeia processada => xx110y11 
+Cabeca de Leitura =>      ^
+Estado Atual      => q2
+δ('q2', 'y') = ('q2', 'y', '>')
+
+Cadeia processada => xx110y11 
+Cabeca de Leitura =>       ^
+Estado Atual      => q2
+δ('q2', '1') = ('q3', 'y', '<')
+
+Cadeia processada => xx110yy1 
+Cabeca de Leitura =>      ^
+Estado Atual      => q3
+δ('q3', 'y') = ('q3', 'y', '<')
+
+Cadeia processada => xx110yy1 
+Cabeca de Leitura =>     ^
+Estado Atual      => q3
+δ('q3', '0') = ('q3', '0', '<')
+
+Cadeia processada => xx110yy1 
+Cabeca de Leitura =>    ^
+Estado Atual      => q3
+δ('q3', '1') = ('q3', '1', '<')
+
+Cadeia processada => xx110yy1 
+Cabeca de Leitura =>   ^
+Estado Atual      => q3
+δ('q3', '1') = ('q3', '1', '<')
+
+Cadeia processada => xx110yy1 
+Cabeca de Leitura =>  ^
+Estado Atual      => q3
+δ('q3', 'x') = ('q0', 'x', '>')
+
+Cadeia processada => xx110yy1 
+Cabeca de Leitura =>   ^
+Estado Atual      => q0
+δ('q0', '1') = ('q1', 'x', '>')
+
+Cadeia processada => xxx10yy1 
+Cabeca de Leitura =>    ^
+Estado Atual      => q1
+δ('q1', '1') = ('q1', '1', '>')
+
+Cadeia processada => xxx10yy1 
+Cabeca de Leitura =>     ^
+Estado Atual      => q1
+δ('q1', '0') = ('q2', '0', '>')
+
+Cadeia processada => xxx10yy1 
+Cabeca de Leitura =>      ^
+Estado Atual      => q2
+δ('q2', 'y') = ('q2', 'y', '>')
+
+Cadeia processada => xxx10yy1 
+Cabeca de Leitura =>       ^
+Estado Atual      => q2
+δ('q2', 'y') = ('q2', 'y', '>')
+
+Cadeia processada => xxx10yy1 
+Cabeca de Leitura =>        ^
+Estado Atual      => q2
+δ('q2', '1') = ('q3', 'y', '<')
+
+Cadeia processada => xxx10yyy 
+Cabeca de Leitura =>       ^
+Estado Atual      => q3
+δ('q3', 'y') = ('q3', 'y', '<')
+
+Cadeia processada => xxx10yyy 
+Cabeca de Leitura =>      ^
+Estado Atual      => q3
+δ('q3', 'y') = ('q3', 'y', '<')
+
+Cadeia processada => xxx10yyy 
+Cabeca de Leitura =>     ^
+Estado Atual      => q3
+δ('q3', '0') = ('q3', '0', '<')
+
+Cadeia processada => xxx10yyy 
+Cabeca de Leitura =>    ^
+Estado Atual      => q3
+δ('q3', '1') = ('q3', '1', '<')
+
+Cadeia processada => xxx10yyy 
+Cabeca de Leitura =>   ^
+Estado Atual      => q3
+δ('q3', 'x') = ('q0', 'x', '>')
+
+Cadeia processada => xxx10yyy 
+Cabeca de Leitura =>    ^
+Estado Atual      => q0
+δ('q0', '1') = ('q1', 'x', '>')
+
+Cadeia processada => xxxx0yyy 
+Cabeca de Leitura =>     ^
+Estado Atual      => q1
+δ('q1', '0') = ('q2', '0', '>')
+
+Cadeia processada => xxxx0yyy 
+Cabeca de Leitura =>      ^
+Estado Atual      => q2
+δ('q2', 'y') = ('q2', 'y', '>')
+
+Cadeia processada => xxxx0yyy 
+Cabeca de Leitura =>       ^
+Estado Atual      => q2
+δ('q2', 'y') = ('q2', 'y', '>')
+
+Cadeia processada => xxxx0yyy 
+Cabeca de Leitura =>        ^
+Estado Atual      => q2
+δ('q2', 'y') = ('q2', 'y', '>')
+
+Cadeia processada => xxxx0yyy 
+Cabeca de Leitura =>         ^
+Estado Atual      => q2
+δ('q2', ' ') = ('qv', ' ', '<')
+
+Cadeia processada => xxxx0yyy 
+Cabeca de Leitura =>        ^
+Estado Atual      => qv
+δ('qv', 'y') = ('qv', '1', '<')
+
+Cadeia processada => xxxx0yy1 
+Cabeca de Leitura =>       ^
+Estado Atual      => qv
+δ('qv', 'y') = ('qv', '1', '<')
+
+Cadeia processada => xxxx0y11 
+Cabeca de Leitura =>      ^
+Estado Atual      => qv
+δ('qv', 'y') = ('qv', '1', '<')
+
+Cadeia processada => xxxx0111 
+Cabeca de Leitura =>     ^
+Estado Atual      => qv
+δ('qv', '0') = ('qv', '0', '<')
+
+Cadeia processada => xxxx0111 
+Cabeca de Leitura =>    ^
+Estado Atual      => qv
+δ('qv', 'x') = ('qv', '1', '<')
+
+Cadeia processada => xxx10111 
+Cabeca de Leitura =>   ^
+Estado Atual      => qv
+δ('qv', 'x') = ('qv', '1', '<')
+
+Cadeia processada => xx110111 
+Cabeca de Leitura =>  ^
+Estado Atual      => qv
+δ('qv', 'x') = ('qv', '1', '<')
+
+Cadeia processada => x1110111 
+Cabeca de Leitura => ^
+Estado Atual      => qv
+δ('qv', 'x') = ('qv', '1', '<')
+
+Cadeia processada => 11110111  
+Cabeca de Leitura => ^
+Estado Atual      => qv
+δ('qv', 'x') = ('qv', '1', '<')
+
+Cadeia processada => 11110111  
+Cabeca de Leitura => ^
+Estado Atual      => q>=
+Nao ha funcao de transicao definida para ('q>=', '1')
+

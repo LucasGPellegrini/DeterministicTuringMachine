@@ -1,0 +1,67 @@
+Estados: ['q0', 'q1', 'q2', 'q3', 'q4']
+Alfabeto da Fita: ['a', 'b', 'x', 'y', ' ']
+Simbolo Vazio: ' '
+Alfabeto (Σ): ['a', 'b']
+Estado inicial: q0
+Estados Finais: {'q4'}
+Transicoes (δ): {('q0', 'a'): ('q1', 'x', '>'), ('q1', 'a'): ('q1', 'a', '>'), ('q1', 'y'): ('q1', 'y', '>'), ('q1', 'b'): ('q2', 'y', '<'), ('q2', 'y'): ('q2', 'y', '<'), ('q2', 'a'): ('q2', 'a', '<'), ('q2', 'x'): ('q0', 'x', '>'), ('q0', 'y'): ('q3', 'y', '>'), ('q3', 'y'): ('q3', 'y', '>'), ('q3', ' '): ('q4', ' ', '>')}
+-----------------------------------------------
+Cadeia inicial    => aaab 
+Cadeia processada => xxay CADEIA REJEITADA!
+
+------------PASSO-A-PASSO------------
+Cadeia processada => aaab 
+Cabeca de Leitura => ^
+Estado Atual      => q0
+δ('q0', 'a') = ('q1', 'x', '>')
+
+Cadeia processada => xaab 
+Cabeca de Leitura =>  ^
+Estado Atual      => q1
+δ('q1', 'a') = ('q1', 'a', '>')
+
+Cadeia processada => xaab 
+Cabeca de Leitura =>   ^
+Estado Atual      => q1
+δ('q1', 'a') = ('q1', 'a', '>')
+
+Cadeia processada => xaab 
+Cabeca de Leitura =>    ^
+Estado Atual      => q1
+δ('q1', 'b') = ('q2', 'y', '<')
+
+Cadeia processada => xaay 
+Cabeca de Leitura =>   ^
+Estado Atual      => q2
+δ('q2', 'a') = ('q2', 'a', '<')
+
+Cadeia processada => xaay 
+Cabeca de Leitura =>  ^
+Estado Atual      => q2
+δ('q2', 'a') = ('q2', 'a', '<')
+
+Cadeia processada => xaay 
+Cabeca de Leitura => ^
+Estado Atual      => q2
+δ('q2', 'x') = ('q0', 'x', '>')
+
+Cadeia processada => xaay 
+Cabeca de Leitura =>  ^
+Estado Atual      => q0
+δ('q0', 'a') = ('q1', 'x', '>')
+
+Cadeia processada => xxay 
+Cabeca de Leitura =>   ^
+Estado Atual      => q1
+δ('q1', 'a') = ('q1', 'a', '>')
+
+Cadeia processada => xxay 
+Cabeca de Leitura =>    ^
+Estado Atual      => q1
+δ('q1', 'y') = ('q1', 'y', '>')
+
+Cadeia processada => xxay 
+Cabeca de Leitura =>     ^
+Estado Atual      => q1
+Nao ha funcao de transicao definida para ('q1', ' ')
+
