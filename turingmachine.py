@@ -54,7 +54,7 @@ class MaquinaTuring:
             caractere = self.cadeia[self.cabeca_leitura]
         # Caso contrário, lê B (uma fita infinita tanto à esquerda,
         # quanto à direita)
-        except IndexError:
+        except:
             self.cadeia[self.cabeca_leitura] = self.simbolo_vazio
         
         # Verifica se o símbolo pertence à (Γ U Σ U B)
@@ -103,7 +103,11 @@ class MaquinaTuring:
         # Processamento
         while not self.fim:
             os.system(CLEAR)
-            caractere = self.cadeia[self.cabeca_leitura]
+            try:
+                caractere = self.cadeia[self.cabeca_leitura]
+            except:
+                self.cadeia[self.cabeca_leitura] = self.simbolo_vazio
+
             transicao = (self.estado_atual, caractere)
 
             # Impressao

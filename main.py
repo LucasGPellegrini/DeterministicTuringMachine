@@ -22,16 +22,20 @@ def main():
             dicio_mt.update({nome:maquina})
             
     # Menu com usuario
-    while opt > 3 or opt < 1:
+    while opt > 7 or opt < 1:
         os.system(CLEAR)
         print("--------------OPCOES--------------")
         print("----------------------------------")
         print("1. MT para Inverter Binario")
         print("2. MT para verificar se uma\n   cadeia pertence a\n   L = {w | w = a^n b a^n}")
-        print("3. Sair do Programa")
+        print("3. MT Teste 1")
+        print("4. MT Teste 2")
+        print("5. MT Teste 3")
+        print("6. MT Teste 4")
+        print("7. Sair do Programa")
         opt = int(input("Escolha uma opção: "))
 
-    if opt == 3: return
+    if opt == 7: return
     else:
         cadeia = input("Digite a cadeia: ")
         if cadeia[-1] != " ": cadeia += " "
@@ -39,10 +43,21 @@ def main():
         if opt == 1:
             dicio_mt['invertebin'].processaCadeia(cadeia)
             main()
-        else:
+        elif opt == 2:
             dicio_mt['anban'].processaCadeia(cadeia)
             main()
-
+        elif opt == 3:
+            dicio_mt['teste1'].processaCadeia(cadeia)
+            main()
+        elif opt == 4:
+            dicio_mt['teste2'].processaCadeia(cadeia)
+            main()
+        elif opt == 5:
+            dicio_mt['teste3'].processaCadeia(cadeia)
+            main()
+        elif opt == 6:
+            dicio_mt['teste4'].processaCadeia(cadeia)
+            main()
 
 
 if __name__ == "__main__":
