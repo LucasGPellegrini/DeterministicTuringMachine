@@ -38,24 +38,41 @@ def main():
     if opt == 7: return
     else:
         cadeia = input("Digite a cadeia: ")
-        if cadeia[-1] != " ": cadeia += " "
-            
+
         if opt == 1:
+            if cadeia[-1] != dicio_mt['invertebin'].simbolo_vazio : 
+                cadeia += dicio_mt['invertebin'].simbolo_vazio
+
             dicio_mt['invertebin'].processaCadeia(cadeia)
             main()
         elif opt == 2:
+            if cadeia[-1] != dicio_mt['anban'].simbolo_vazio : 
+                cadeia += dicio_mt['anban'].simbolo_vazio
+
             dicio_mt['anban'].processaCadeia(cadeia)
             main()
         elif opt == 3:
+            if cadeia[-1] != dicio_mt['teste1'].simbolo_vazio : 
+                cadeia += dicio_mt['teste1'].simbolo_vazio
+
             dicio_mt['teste1'].processaCadeia(cadeia)
             main()
         elif opt == 4:
+            if cadeia[-1] != dicio_mt['teste2'].simbolo_vazio : 
+                cadeia += dicio_mt['teste2'].simbolo_vazio
+
             dicio_mt['teste2'].processaCadeia(cadeia)
             main()
         elif opt == 5:
+            if cadeia[-1] != dicio_mt['teste3'].simbolo_vazio : 
+                cadeia += dicio_mt['teste3'].simbolo_vazio
+
             dicio_mt['teste3'].processaCadeia(cadeia)
             main()
         elif opt == 6:
+            if cadeia[-1] != dicio_mt['teste4'].simbolo_vazio : 
+                cadeia += dicio_mt['teste4'].simbolo_vazio
+
             dicio_mt['teste4'].processaCadeia(cadeia)
             main()
 
